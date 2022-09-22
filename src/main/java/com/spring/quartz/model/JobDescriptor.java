@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import org.quartz.*;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static org.quartz.JobBuilder.newJob;
@@ -22,6 +23,10 @@ public class JobDescriptor {
 
     @JsonProperty("group")
     private String group;
+
+    @JsonProperty("description")
+    private String description;
+
 
     @JsonProperty("data")
     private Map<String, Object> data = new LinkedHashMap<>();
@@ -56,10 +61,14 @@ public class JobDescriptor {
         JobDataMap jobDataMap = data == null ? new JobDataMap(new LinkedHashMap<>()) : new JobDataMap(data);
         jobDataMap.put("jobGroup", group);
         jobDataMap.put("jobName", name);
+        jobDataMap.put("description", description);
+
+
 
         return newJob(Action.class)
                 .withIdentity(getName(), getGroup())
                 .usingJobData(jobDataMap)
+
                 .build();
     }
 

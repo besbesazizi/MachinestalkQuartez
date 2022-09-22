@@ -6,9 +6,9 @@ server:
   port: 8090
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/scheduler
-    username: techtutor
-    password: password
+    url: jdbc:postgresql://localhost:5432/talk
+    username: postgres
+    password: bessem
   jpa:
     properties:
       hibernate:

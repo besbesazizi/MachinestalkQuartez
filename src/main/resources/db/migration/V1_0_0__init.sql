@@ -4,6 +4,8 @@ CREATE TABLE qrtz_job_details
      job_name          VARCHAR(200) NOT NULL,
      job_group         VARCHAR(200) NOT NULL,
      description       VARCHAR(250) NULL,
+     tenantId          VARCHAR(250) NULL,
+     datecreated          BIGINT NULL,
      job_class_name    VARCHAR(250) NOT NULL,
      is_durable        BOOL NOT NULL,
      is_nonconcurrent  BOOL NOT NULL,

@@ -1,5 +1,8 @@
 package com.spring.quartz.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import lombok.Data;
 import org.quartz.JobDataMap;
 import org.quartz.Trigger;
@@ -18,10 +21,12 @@ import static org.quartz.TriggerBuilder.newTrigger;
 import static org.springframework.util.StringUtils.isEmpty;
 
 @Data
-public class TriggerDescriptor {
+public class   TriggerDescriptor {
 
     private String name;
     private String group;
+   // @JsonDeserialize(using = LocalDateDeserializer.class)
+   // @JsonFormat(pattern="dd/MM/yyyy hh:mm")
     private LocalDateTime fireTime;
     private String cron;
     private TriggerState triggerState;

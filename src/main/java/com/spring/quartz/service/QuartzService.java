@@ -1,5 +1,6 @@
 package com.spring.quartz.service;
 
+import com.spring.quartz.model.Event;
 import com.spring.quartz.model.JobDescriptor;
 import org.quartz.JobDetail;
 
@@ -8,17 +9,21 @@ import java.util.Optional;
 
 public interface QuartzService {
 
-    JobDescriptor createJob(String group, JobDescriptor descriptor);
+    JobDescriptor createJob( JobDescriptor descriptor);
 
     List<JobDescriptor> findAllJobs();
+    List<Event>getEventsJobs(String key);
 
-    Optional<JobDescriptor> findJob(String group, String name);
+    Optional<JobDescriptor> findJob( String name);
 
-    Optional<JobDetail> updateJob(String group, String name, JobDescriptor descriptor);
+    Optional<JobDetail> updateJob( String name, JobDescriptor descriptor);
 
-    void deleteJob(String group, String name);
+    void deleteJob( String name);
 
-    void pauseJob(String group, String name);
+    void pauseJob( String name);
 
-    void resumeJob(String group, String name);
+    void resumeJob(String name);
+    void resumeTrigger(String name);
+    void notifyFrontEnd();
+     void pauseTrigger( String name);
 }
