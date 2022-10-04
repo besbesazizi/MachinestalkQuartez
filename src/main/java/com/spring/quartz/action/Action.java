@@ -53,7 +53,6 @@ public class Action implements Job {
             URI determinedBasePathUri = URI.create(sb.toString());
             System.out.println(determinedBasePathUri);
             log.info(objectMapper.writeValueAsString(context.getJobDetail().getJobDataMap().get(TENANT_ID)));
-            log.info("Action ** {} ** starting @ {}", context.getJobDetail().getKey().getName(), context.getFireTime());
             log.info("Stored Data {}", objectMapper.writeValueAsString(context.getJobDetail().getJobDataMap().get(URL)));
            feignInterface.SendDataToBack( determinedBasePathUri,jsonNode);
             webSocketService.sendMessage("action");
